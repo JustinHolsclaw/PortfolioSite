@@ -1,0 +1,43 @@
+
+.AppContainer{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+    height: 100vh;
+}
+
+.fa {
+    padding: .5em;
+    font-size: 30px;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+    transition: background-color .25s ease-in-out;
+  }
+
+  .fa:hover{
+    background-color: rgb(255, 189, 74);
+    color: black;
+  }
+
+  .justinimage{
+    height: auto;
+    width: auto;
+  }
+
+  .navbar-bg{
+    background-color: black;
+  }
+
+  .onhover-nav{
+    border-left:black solid .5px;
+    border-right: black solid .5px;
+  }
+
+  .onhover-nav:hover{
+    background-color: rgb(31, 30, 30);
+    border-left: gray solid .5px;
+    border-right: gray solid .5px;
+    transition: .25s ease-in-out;
+  }
