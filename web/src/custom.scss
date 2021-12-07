@@ -41,3 +41,15 @@
     border-right: gray solid .5px;
     transition: .25s ease-in-out;
   }
+
+  .btn-style{
+    font-weight: 400;
+    color: black;
+    border: black solid 2px;
+    transition: background-color .35s ease-in-out;
+  }
+
+  .btn-style:hover{
+    background-color: black;
+    color: white;
+  }
