@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2.4.0
-      - name: build
+      - name: test
         run: |
-          docker-compose up --build -d
+          docker run -rm -v $(pwd)/web:/app node:14 npm i
+          docker run -rm -v $(pwd)/web:/app node:14 npm run test
+      - name: build
+        run: docker-compose up --build -d
+
+
