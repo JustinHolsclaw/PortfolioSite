@@ -9,13 +9,13 @@ function NavBar() {
     <div className="collapse navbar-collapse" id="navbarText">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active onhover-nav">
-          <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a className="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li className="nav-item active onhover-nav">
-          <a className="nav-link" href="#">Features</a>
+          <a className="nav-link" href="/Projects">Projects</a>
         </li>
         <li className="nav-item active onhover-nav">
-          <a className="nav-link" href="#">Pricing</a>
+          <a className="nav-link" href="/ContactMe">Contact Me</a>
         </li>
       </ul>
     </div>
