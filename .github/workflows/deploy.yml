@@ -15,7 +15,7 @@ jobs:
       - name: test
         run: |
           docker run --rm -v $(pwd)/web:/app -w /app node:14 npm i
-          docker run --rm -v $(pwd)/web:/app -w /app node:14 npm run test
+          docker run --rm -v $(pwd)/web:/app -w /app node:14 npm run ops:test
       - name: build
         run: docker-compose up --build -d
 
