@@ -22,10 +22,9 @@ services:
       - PGID=1000
       - TZ=America/Denver
       - URL=justinholsclaw.com
-      - SUBDOMAINS=www,
       - VALIDATION=http
       - STAGING=false
-      - SUBDOMAINS=www,
+      - SUBDOMAINS=www
     volumes:
       - /swag:/config
       - ./ops/deploying/default.cong:/config/nginx/site-confs/default
