@@ -11,3 +11,23 @@ services:
     build: ./api
     ports:
       - 5000:5000
+  swag:
+    image: ghcr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Denver
+      - URL=justinholsclaw.com
+      - VALIDATION=http
+      - STAGING = false
+      - SUBDOMAINS=www,
+    volumes:
+      - /swag:/config
+      - ./ops/deploying/default.cong:/config/nginx/site-confs/default
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
