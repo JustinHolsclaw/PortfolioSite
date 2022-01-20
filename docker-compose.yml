@@ -1,6 +1,6 @@
-version: "3"
+version: '3'
 
-services:
+services: 
   web:
     build: ./web
     ports:
@@ -11,6 +11,7 @@ services:
     build: ./api
     ports:
       - 5000:5000
+
   swag:
     image: ghcr.io/linuxserver/swag
     container_name: swag
@@ -21,8 +22,9 @@ services:
       - PGID=1000
       - TZ=America/Denver
       - URL=justinholsclaw.com
+      - SUBDOMAINS=www,
       - VALIDATION=http
-      - STAGING = false
+      - STAGING=false
       - SUBDOMAINS=www,
     volumes:
       - /swag:/config
