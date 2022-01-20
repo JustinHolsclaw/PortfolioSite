@@ -1,6 +1,6 @@
-version: '3'
+version: "3"
 
-services: 
+services:
   web:
     build: ./web
     ports:
@@ -29,5 +29,5 @@ services:
       - ./ops/deploying/default.cong:/config/nginx/site-confs/default
     ports:
       - 443:443
-      - 80:80 #optional
+      - 80:80
     restart: unless-stopped
