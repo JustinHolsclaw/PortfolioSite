@@ -30,5 +30,4 @@ services:
       - ./ops/deploying/default.cong:/config/nginx/site-confs/default
     ports:
       - 443:443
-      - 80:80
     restart: unless-stopped
