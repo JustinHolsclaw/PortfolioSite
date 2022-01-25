@@ -33,7 +33,7 @@ services:
       - SUBDOMAINS=www, wgadmin
     volumes:
       - /swag:/config
-      - ./ops/nginx.conf:/config/nginx/site-confs/default
+      - /ops/nginx.conf:/config/nginx/site-confs/default
     ports:
       - 80:80
       - 443:443
