@@ -42,8 +42,6 @@ namespace PortfolioApi.Controllers
             return portfolioItem;
         }
 
-        // PUT: api/Portfolio/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPortfolioItem(int id, PortfolioItem portfolioItem)
         {
@@ -73,8 +71,6 @@ namespace PortfolioApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Portfolio
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<PortfolioItem>> PostPortfolioItem(PortfolioItem portfolioItem)
         {
