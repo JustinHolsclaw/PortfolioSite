@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace PortfolioApi.Controllers;
 
@@ -19,14 +21,19 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public string Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        ProcessStartInfo procStartInfo = new ProcessStartInfo("systemctl", "status wg-quick@wg0");
+        procStartInfo.RedirectStandardOutput = true;
+        procStartInfo.UseShellExecute = false;
+        procStartInfo.CreateNoWindow = true;
+
+        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+        proc.StartInfo = procStartInfo;
+        proc.Start();
+
+        String result = proc.StandardOutput.ReadToEnd();
+        Console.WriteLine(result);
+        return result;
     }
 }
