@@ -20,13 +20,14 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet(Name = "GetSystemStatus")]
     public string Get()
     {
-        ProcessStartInfo procStartInfo = new ProcessStartInfo("systemctl", "status wg-quick@wg0");
+        ProcessStartInfo procStartInfo = new ProcessStartInfo("systemctl", "status wg-quick@wg0.service");
         procStartInfo.RedirectStandardOutput = true;
         procStartInfo.UseShellExecute = false;
         procStartInfo.CreateNoWindow = true;
+        procStartInfo.UserName = "github";
 
         System.Diagnostics.Process proc = new System.Diagnostics.Process();
         proc.StartInfo = procStartInfo;
