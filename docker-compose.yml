@@ -40,3 +40,16 @@ services:
       - 80:80
       - 443:443
     restart: unless-stopped
+  postgres_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=justin_admin
+      - POSTGRES_PASSWORD=justin_admin
+      - POSTGRES_DB=production_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./script.sql:/docker-entrypoint-initdb.d/creationscript.sql
+      - /data/postgres:/var/lib/postgresql/data/
+
