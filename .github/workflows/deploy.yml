@@ -19,4 +19,12 @@ jobs:
       - name: build
         run: docker-compose up --build -d
 
+      - name: run API
+        run: |
+          pwd
+          dotnet publish
+          
+
+
+
 
