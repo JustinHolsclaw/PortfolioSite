@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<PortfolioContext>(opt =>
-    opt.UseInMemoryDatabase("PortfolioList"));
+    opt.UseNpgsql("server=localhost;port=5432;database=postgres;user id=justin_admin;password=justin_admin"));
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "PortfolioApi", Version = "v1" });
