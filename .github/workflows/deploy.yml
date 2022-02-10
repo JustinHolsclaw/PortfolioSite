@@ -22,4 +22,5 @@ jobs:
       - name: run API
         run: |
           dotnet publish api
-          dotnet api/bin/Debug/net6.0/PortfolioApi.dll
+          dotnet api/bin/Debug/net6.0/PortfolioApi.dll &
+          
