@@ -12,22 +12,22 @@ function AdminHome() {
     };
 
     const handleClientNameChange = event => {
-        setclientname(event.target.value)
+        setClientName(event.target.value)
     }
     const handleIpAddressChange = event => {
-        setclientname(event.target.value)
+        setIpAddress(event.target.value)
     }
     const handleDateAddedChange = event => {
-        setclientname(event.target.value)
+        setDateAdded(event.target.value)
     }
     const handleAllowedIpRangeChange = event => {
-        setclientname(event.target.value)
+        setAllowdIpRange(event.target.value)
     }
     const handleClientPublicKeyChange = event => {
-        setclientname(event.target.value)
+        setClientPublicKey(event.target.value)
     }
     const handleClientPrivateKeyChange = event => {
-        setclientname(event.target.value)
+        setClientPrivateKey(event.target.value)
     }
 
     return (
