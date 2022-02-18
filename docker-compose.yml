@@ -47,6 +47,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./script.sql:/docker-entrypoint-initdb.d/creationscript.sql
+     # - ./script.sql:/docker-entrypoint-initdb.d/creationscript.sql
       - /data/postgres:/var/lib/postgresql/data/
 
