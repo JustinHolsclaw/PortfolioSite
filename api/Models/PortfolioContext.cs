@@ -10,6 +10,7 @@ namespace PortfolioApi.Models
             {
             }
 
-            public DbSet<PortfolioItem> PropertyItems {get; set;} = null!;
+            public DbSet<PortfolioItem> PropertyItems {get; set;}
+            public DbSet<AdminItem> AdminItems {get; set;}
     }
 }
