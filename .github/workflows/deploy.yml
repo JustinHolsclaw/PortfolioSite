@@ -23,4 +23,5 @@ jobs:
         run: |
           dotnet publish api
           dotnet api/bin/Debug/net6.0/PortfolioApi.dll &
+          #run the API as a service
           

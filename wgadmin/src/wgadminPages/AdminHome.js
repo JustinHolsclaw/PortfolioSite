@@ -1,6 +1,10 @@
 import { useState } from "react";
+import {axios} from "axios";
 
 function AdminHome() {
+    axios.get('/user')
+
+
     const [clientName, setClientName] = useState('');
     const [ipAddress, setIpAddress] = useState('');
     const [dateAdded, setDateAdded] = useState('');
@@ -8,7 +12,7 @@ function AdminHome() {
     const [clientPublicKey, setClientPublicKey] = useState('')
     const [clientPrivateKey, setClientPrivateKey] = useState('')
     const handleAdminFormSubmit = () => {
-
+        
     };
 
     const handleClientNameChange = event => {
@@ -34,6 +38,7 @@ function AdminHome() {
         <>
             <form
                 id="admin-form"
+                onSubmit={handleAdminFormSubmit}
             >
                 <div className="form-group mb-3">
                     <label htmlFor="clientname"><strong>Client Name:</strong></label>
@@ -90,7 +95,10 @@ function AdminHome() {
                         name="clientPrivateKey">
                     </input>
                 </div>
+                <button className="btn bg-dark text-light">Most Bad Ass Button Ever</button>
             </form>
+
+            <button className="btn bg-alert text-alert">Restart WireGuard Service</button>
         </>
     )
 }
