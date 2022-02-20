@@ -22,7 +22,7 @@ if (builder.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PortfolioApi v1"));
 }
-app.UseSwagger();
+
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
