@@ -2,8 +2,10 @@ import { useState } from "react";
 import { axios } from "axios";
 
 function AdminHome() {
+    
+
     function restartService() {
-        axios.post('/restartService', {
+        axios.post('0.0.0.0:5001/api/Portfolio/restartService', {
 
         })
             .then(function (response) {
