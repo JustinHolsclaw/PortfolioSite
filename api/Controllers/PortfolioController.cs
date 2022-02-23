@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Models;
+using System.Diagnostics;
 
 namespace PortfolioApi.Controllers
 {
@@ -99,6 +100,13 @@ namespace PortfolioApi.Controllers
         private bool PortfolioItemExists(int id)
         {
             return _context.PropertyItems.Any(e => e.Id == id);
+        }
+        // POST: api/Portfolio/restartService
+        [HttpPost]
+
+        public void PostRestartWgAdmin()
+        {
+            Process.Start("/bin/systemctl restart wg-quick@wg0.service");
         }
     }
 }
