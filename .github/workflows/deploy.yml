@@ -22,5 +22,5 @@ jobs:
       - name: run API
         run: |
           dotnet publish api
-          systemctl restart PortfolioApi.service
+          sudo systemctl restart PortfolioApi.service
           
