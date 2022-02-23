@@ -2,7 +2,7 @@ import { useState } from "react";
 //import {axios} from "axios";
 
 function AdminHome() {
-    axios.get('/user')
+    //axios.get('/user')
 
 
     const [clientName, setClientName] = useState('');
