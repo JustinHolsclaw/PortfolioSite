@@ -6,7 +6,7 @@ function AdminHome() {
     const axios = require('axios').default;
 
     function restartService() {
-        axios.post('0.0.0.0:5001/api/Portfolio/restartService', {
+        axios.post('0.0.0.0:5001/api/restartService', {
 
         })
             .then(function (response) {
