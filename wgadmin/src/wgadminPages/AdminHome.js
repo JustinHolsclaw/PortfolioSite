@@ -6,12 +6,10 @@ function AdminHome() {
     const axios = require('axios').default;
 
     function restartService() {
-        axios.post('0.0.0.0:5001/api/restartService', {
-
-        })
-            .then(function (response) {
-                console.log(response);
-            })
+        axios.get('0.0.0.0:5001/api/portfolio/restart')
+        .then(response => 
+            console.log(response)
+        )
     }
 
 
