@@ -6,7 +6,7 @@ function AdminHome() {
     const axios = require('axios').default;
 
     function restartService() {
-        axios.get('0.0.0.0:5001/api/portfolio/restart')
+        axios.get('45.79.101.50:5001/api/portfolio/restart')
         .then(response => 
             console.log(response)
         )

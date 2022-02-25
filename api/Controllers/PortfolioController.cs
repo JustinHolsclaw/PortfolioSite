@@ -102,11 +102,29 @@ namespace PortfolioApi.Controllers
             return _context.PropertyItems.Any(e => e.Id == id);
         }
         // POST: api/Portfolio/restartService
-        [HttpPost]
+        [HttpGet ("/restart")]
 
-        public void PostRestartWgAdmin()
+        public string PostRestartWgAdmin()
         {
-            Process.Start("/bin/systemctl restart wg-quick@wg0.service");
+            var process = new Process()
+            {
+                StartInfo = new()
+                {
+                    FileName = "sudo",
+                    Arguments = "systemctl restart wg-quick@wg0",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
+            process.Start();
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+            process.WaitForExit();
+
+            if (string.IsNullOrEmpty(error)) { return output; }
+            else { return error; }
         }
     }
 }
