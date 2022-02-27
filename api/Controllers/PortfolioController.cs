@@ -102,7 +102,7 @@ namespace PortfolioApi.Controllers
             return _context.PropertyItems.Any(e => e.Id == id);
         }
         // POST: api/Portfolio/restartService
-        [HttpGet ("/api/restart")]
+        [HttpGet ("/api/Portfolio/restart")]
 
         public string PostRestartWgAdmin()
         {
