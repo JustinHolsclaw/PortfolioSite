@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Models;
 using System.Diagnostics;
 using BCrypt;
+using PortfolioApi.services;
 
 namespace PortfolioApi.Controllers
 {
@@ -17,10 +18,14 @@ namespace PortfolioApi.Controllers
     public class PortfolioController : ControllerBase
     {
         private readonly PortfolioContext _context;
+        private readonly IAuthService authService;
+        private readonly ISessionService sessionService;
 
-        public PortfolioController(PortfolioContext context)
+        public PortfolioController(PortfolioContext context, IAuthService authService, ISessionService sessionService)
         {
             _context = context;
+            this.authService = authService;
+            this.sessionService = sessionService;
         }
 
         // GET: api/Portfolio
@@ -156,18 +161,32 @@ namespace PortfolioApi.Controllers
         //POST: api/Portfolio/Login
         [HttpPost("/api/Portfolio/Login")]
 
-        public IActionResult Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-
-            var cookieOptions = new CookieOptions()
+            if (await authService.ValidateAsync(request.UserName, request.Password))
             {
-                SameSite = SameSiteMode.Strict,
-                HttpOnly = true,
-                Secure = true
-            };
-            
-            Response.Cookies.Append("Session_id", "test", cookieOptions);
-            return Ok();
+                string Session_id = Guid.NewGuid().ToString();
+
+                var cookieOptions = new CookieOptions()
+                {
+                    SameSite = SameSiteMode.Strict,
+                    HttpOnly = true,
+                    Secure = true
+                };
+                
+                try
+                {
+                    await sessionService.AddSessionAsync(Session_id, request.UserName);
+                    Response.Cookies.Append("Session_id", Session_id, cookieOptions);
+                    return Ok();
+                }
+                catch(Exception ex){
+                    return StatusCode(500);
+                }
+            }
+            else{
+                return Unauthorized();
+            }
         }
     }
 }

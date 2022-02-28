@@ -49,5 +49,19 @@ namespace PortfolioApi.Models
         }
     }
 
+    public class SessionItem
+    {
+        public int? Id {get; set;}
+        public string Session_id {get; set;}
+        public string UserName {get; set;}
+        public DateTime Expiration {get; set;}
+        
+        public SessionItem(int? Id, string Session_id, string UserName, DateTime Expiration){
+            this.Id = Id;
+            this.Session_id = Session_id;
+            this.UserName = UserName;
+            this.Expiration = Expiration;
+        }
+    }
 
 }
