@@ -15,7 +15,7 @@ function Login(){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-            axios.post('https://wgadmin.justinholsclaw.com/api/Portfolio/Login', {username, password})
+            axios.post('/api/Portfolio/Login', {username, password})
             .then(response => {
                 console.log(response)
             }
