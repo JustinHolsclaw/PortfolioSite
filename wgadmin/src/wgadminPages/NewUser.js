@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import axios from 'axios';
 function NewUser() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');

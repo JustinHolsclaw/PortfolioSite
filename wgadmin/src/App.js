@@ -1,4 +1,4 @@
-import { Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AdminHome from './wgadminPages/AdminHome';
 import NewUser from './wgadminPages/NewUser';
@@ -14,5 +14,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
