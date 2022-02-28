@@ -6,7 +6,7 @@ function AdminHome() {
     const axios = require('axios').default;
 
     function restartService() {
-        axios.get('https://wgadmin.justinholsclaw.com/api/restart')
+        axios.get('https://wgadmin.justinholsclaw.com/api/Portfolio/restart')
         .then(response => {
             console.log(response)
             // if(response.status === 200){
