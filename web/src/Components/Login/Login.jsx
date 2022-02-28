@@ -15,13 +15,11 @@ function Login(){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        if(formValid){
             axios.post('https://wgadmin.justinholsclaw.com/api/Portfolio/Login', {username, password})
             .then(response => {
                 console.log(response)
             }
             )  
-        }
     }
     return (
         <>
