@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Models;
 using System.Diagnostics;
+using BCrypt;
 
 namespace PortfolioApi.Controllers
 {
@@ -101,8 +102,8 @@ namespace PortfolioApi.Controllers
         {
             return _context.PropertyItems.Any(e => e.Id == id);
         }
-        // POST: api/Portfolio/restartService
-        [HttpGet ("/api/Portfolio/restart")]
+        // GET: api/Portfolio/restartService
+        [HttpGet("/api/Portfolio/restart")]
 
         public string PostRestartWgAdmin()
         {
@@ -125,6 +126,28 @@ namespace PortfolioApi.Controllers
 
             if (string.IsNullOrEmpty(error)) { return output; }
             else { return error; }
+        }
+        // GET: api/Portfolio/createUser
+        [HttpPost("/api/Portfolio/createUser")]
+
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
+        {
+            if(request.UserName.Trim().Length <= 5){
+                return StatusCode(400);
+            }
+            if(request.Password.Trim().Length < 8){
+                return StatusCode(400);
+            }
+            if(request.RePassword.Trim() != request.Password.Trim()){
+                return StatusCode(400);
+            }
+            
+            string salt = BCrypt.Net.BCrypt.GenerateSalt(10);
+            string hash = BCrypt.Net.BCrypt.HashPassword(request.Password, salt);
+
+            _context.UserItems.Add(new UserItem(null, request.UserName, hash, salt));
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }

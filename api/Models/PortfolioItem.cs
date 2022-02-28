@@ -35,5 +35,19 @@ namespace PortfolioApi.Models
         }
     }
 
+    public class UserItem
+    {
+        public int? Id {get; set;}
+        public string UserName {get; set;}
+        public string Hash {get; set;}
+        public string Salt {get; set;}
+        public UserItem(int? Id, string UserName, string Hash, string Salt){
+            this.Id = Id;
+            this.UserName = UserName;
+            this.Hash = Hash;
+            this.Salt = Salt;
+        }
+    }
+
 
 }
