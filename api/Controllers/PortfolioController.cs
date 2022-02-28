@@ -188,5 +188,22 @@ namespace PortfolioApi.Controllers
                 return Unauthorized();
             }
         }
+
+        [HttpGet("/api/Portfolio/Secure")]
+
+        public async Task<IActionResult> Secure()
+        {
+            HttpContext.Request.Cookies.TryGetValue("Session_id", out string? Session_id);
+            if(Session_id == null)
+            {
+                return StatusCode(403);
+            }
+            if(await sessionService.IsSessionValid(Session_id))
+            {
+                var UserName = (await sessionService.GetSessionBySessionIdAsync(Session_id))?.UserName;
+                return Ok(UserName);
+            }
+            return StatusCode(403);
+        }
     }
 }
