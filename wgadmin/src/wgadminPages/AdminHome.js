@@ -8,12 +8,13 @@ function AdminHome() {
     function restartService() {
         axios.get('https://wgadmin.justinholsclaw.com/api/restart')
         .then(response => {
-            if(response.status === 200){
-                setStatus("Wire Guard is Restarting");
-            }
-            else{
-                setStatus("An error has prevented Wire Guard from Restarting");
-            }
+            console.log(response)
+            // if(response.status === 200){
+            //     setStatus("Wire Guard is Restarting");
+            // }
+            // else{
+            //     setStatus("An error has prevented Wire Guard from Restarting");
+            // }
         }
         )
     }
