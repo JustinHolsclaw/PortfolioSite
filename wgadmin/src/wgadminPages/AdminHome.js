@@ -6,13 +6,19 @@ function AdminHome() {
     const axios = require('axios').default;
 
     function restartService() {
-        axios.get('https://wgadmin.justinholsclaw.com/api/portfolio/restart')
-        .then(response => 
-            console.log(response)
+        axios.get('https://wgadmin.justinholsclaw.com/api/restart')
+        .then(response => {
+            if(response.status === 200){
+                setStatus("Wire Guard is Restarting");
+            }
+            else{
+                setStatus("An error has prevented Wire Guard from Restarting");
+            }
+        }
         )
     }
 
-
+    const [status, setStatus] = useState('Wire Guard is Running');
     const [clientName, setClientName] = useState('');
     const [ipAddress, setIpAddress] = useState('');
     const [dateAdded, setDateAdded] = useState('');
@@ -103,9 +109,10 @@ function AdminHome() {
                         name="clientPrivateKey">
                     </input>
                 </div>
-                <button className="btn bg-dark text-light">Most Bad Ass Button Ever</button>
+                <button className="btn bg-dark text-light">Submit</button>
             </form>
-
+            <h3>Current Status:</h3><br/>
+            <h4>{status}</h4>
             <button className="btn bg-alert text-alert" onClick={restartService}>Restart WireGuard Service</button>
         </>
     )
