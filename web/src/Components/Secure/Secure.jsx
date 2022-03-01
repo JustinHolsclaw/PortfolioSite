@@ -20,7 +20,7 @@ function Secure() {
 
                 })
 
-    })
+    },[])
     const logoutHandler = () => {
         axios.delete('/api/Portfolio/secure', {withCredentials: true}).then(
             r => navigate(r.headers.location)
