@@ -4,35 +4,9 @@ import Project from "./Views/Project";
 import ContactMe from "./Views/ContactMe";
 import Login from "./Components/Login/Login";
 import Secure from "./Components/Secure/Secure";
-
-// const AuthorizedRoute = ({ children, isAuthorized, ...rest }) => {
-//   if (!isAuthorized) {
-//     AuthService.signinRedirect();
-//     return <Route {...rest}>{children}</Route>;
-//   } else {
-//     return <Route {...rest}>{children}</Route>;
-//   }
-// };
-
-// const AdminRoute = ({ children, isAdmin, ...rest }) => {
-//   if (isAdmin === true) {
-//     return <Route {...rest}>{children}</Route>;
-//   } else {
-//     return (
-//       <Route {...rest}>
-//         <UnAuthorized />
-//       </Route>
-//     );
-//   }
-// };
+import Logout from "./Components/Secure/Logout";
 
 const MainSwitch = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(checkIfLoggedIn());
-  // }, [dispatch]);
-  // const isAuthenticated = useStoreSelector((state) => state.auth.isLoggedIn);
-  // const isAdmin = useStoreSelector((state) => state.auth.isAdmin);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -40,9 +14,8 @@ const MainSwitch = () => {
       <Route path="/resume" />
       <Route path="/ContactMe" element={<ContactMe />} />
       <Route path="/Login" element={<Login />} />
-      {/* <AuthorizedRoute > */}
-        <Route path="/Secure" element={<Secure />} />
-      {/* </AuthorizedRoute> */}
+      <Route path="/Secure" element={<Secure />} />
+      <Route path="/Logout" element={<Logout/>}/>
     </Routes>
   );
 };
