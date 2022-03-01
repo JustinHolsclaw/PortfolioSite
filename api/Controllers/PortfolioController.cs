@@ -117,7 +117,7 @@ namespace PortfolioApi.Controllers
                 StartInfo = new()
                 {
                     FileName = "sudo",
-                    Arguments = "systemctl restart wg-quick@wg0",
+                    Arguments = "systemctl restart wg-quick@wg0.service",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
