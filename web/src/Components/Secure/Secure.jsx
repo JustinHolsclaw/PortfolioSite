@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axions, {AxiosResponse, AxiosError} from "react";
+import axios, {AxiosResponse, AxiosError} from "react";
 function Secure() {
     const [username, setUsername] = useState('')
     useEffect(() => {
@@ -12,7 +12,7 @@ function Secure() {
                 {
                     if(err.response?.status === 403){
                         if(err.response?.headers.location){
-                            
+
                         }
                     }
 
