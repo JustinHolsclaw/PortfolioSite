@@ -205,5 +205,28 @@ namespace PortfolioApi.Controllers
             }
             return StatusCode(403);
         }
+
+        [HttpDelete ("/api/Portfolio/Secure")]
+
+        public async Task<IActionResult> deleteSecure()
+        {
+            HttpContext.Request.Cookies.TryGetValue("Session_id", out string? Session_id);
+            try{
+                if(await sessionService.IsSessionValid(Session_id)){
+                    await sessionService.DeleteSessionAsync(Session_id);
+                    var cookieOptions = new CookieOptions(){
+                        SameSite = SameSiteMode.Strict, HttpOnly = true, Secure = true
+                    };
+                    Response.Cookies.Append("Session_id", "", cookieOptions);
+                    Response.Headers.Location= "/login";
+
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch{
+                return StatusCode(500);
+            }
+        }
     }
 }

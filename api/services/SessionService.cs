@@ -39,6 +39,6 @@ public class SessionService : ISessionService
     }
     public async Task DeleteSessionAsync(string Session_Id)
     {
-        
+        await dbService.DeleteSessionAsync(Session_Id);   
     }
 }
