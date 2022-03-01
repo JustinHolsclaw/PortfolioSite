@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useNavigate} from 'react-router-dom';
 
 function Login(){
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [status, setStatus] = useState(200);
+    const navigate = useNavigate();
 
     const handleUserName = (e) =>{
         setUserName(e.target.value)
@@ -18,11 +19,19 @@ function Login(){
     const handleSubmit = (e) =>{
         e.preventDefault()
             axios.post('/api/Portfolio/Login', {username, password})
-            .then(response => {
-                console.log(response)
-                setStatus(response.status)
+            .then(r => {
+                console.log(r)
+                if(r.response?.status == 200){
+                    navigate("/Secure")
+                }
             }
-            )  
+            )
+            .catch(
+                err => {
+                    console.error(err)
+                    alert("incorrect username or password")
+                }
+            )
     }
     return (
         <>
@@ -34,15 +43,6 @@ function Login(){
                     <input value={password} onChange={handlePassword}></input><br/>
                     <button type='submit'>Submit</button>
                 </form>
-                {   () =>{
-                    if(status == 400){
-                    alert(" username or password")
-                    }
-                    else{
-                        return <Redirect target="/Secure"/>
-                    }
-                    }   
-                }
             </div>
         </>
     )
