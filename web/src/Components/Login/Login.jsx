@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Login(){
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [status, setStatus] = useState(200);
 
     const handleUserName = (e) =>{
         setUserName(e.target.value)
@@ -31,7 +33,15 @@ function Login(){
                     <input value={password} onChange={handlePassword}></input>
                     <button type='submit'>Submit</button>
                 </form>
-
+                {   () =>{
+                    if(status == 400){
+                    alert(" username or password")
+                    }
+                    else{
+                        return <Redirect target="/Secure"/>
+                    }
+                    }   
+                }
             </div>
         </>
     )
