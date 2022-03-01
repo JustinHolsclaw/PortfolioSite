@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios, {AxiosResponse, AxiosError} from "react";
+import axios, {AxiosResponse, AxiosError} from "axios";
 import {useNavigate} from 'react-router-dom';
 function Secure() {
     const navigate = useNavigate()
