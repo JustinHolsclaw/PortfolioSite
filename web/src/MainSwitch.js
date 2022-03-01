@@ -4,34 +4,34 @@ import Project from "./Views/Project";
 import ContactMe from "./Views/ContactMe";
 import Login from "./Components/Login/Login";
 
-const AuthorizedRoute = ({ children, isAuthorized, ...rest }) => {
-  if (!isAuthorized) {
-    AuthService.signinRedirect();
-    return <Route {...rest}>{children}</Route>;
-  } else {
-    return <Route {...rest}>{children}</Route>;
-  }
-};
+// const AuthorizedRoute = ({ children, isAuthorized, ...rest }) => {
+//   if (!isAuthorized) {
+//     AuthService.signinRedirect();
+//     return <Route {...rest}>{children}</Route>;
+//   } else {
+//     return <Route {...rest}>{children}</Route>;
+//   }
+// };
 
-const AdminRoute = ({ children, isAdmin, ...rest }) => {
-  if (isAdmin === true) {
-    return <Route {...rest}>{children}</Route>;
-  } else {
-    return (
-      <Route {...rest}>
-        <UnAuthorized />
-      </Route>
-    );
-  }
-};
+// const AdminRoute = ({ children, isAdmin, ...rest }) => {
+//   if (isAdmin === true) {
+//     return <Route {...rest}>{children}</Route>;
+//   } else {
+//     return (
+//       <Route {...rest}>
+//         <UnAuthorized />
+//       </Route>
+//     );
+//   }
+// };
 
 const MainSwitch = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(checkIfLoggedIn());
-  }, [dispatch]);
-  const isAuthenticated = useStoreSelector((state) => state.auth.isLoggedIn);
-  const isAdmin = useStoreSelector((state) => state.auth.isAdmin);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(checkIfLoggedIn());
+  // }, [dispatch]);
+  // const isAuthenticated = useStoreSelector((state) => state.auth.isLoggedIn);
+  // const isAdmin = useStoreSelector((state) => state.auth.isAdmin);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -39,9 +39,9 @@ const MainSwitch = () => {
       <Route path="/resume" />
       <Route path="/ContactMe" element={<ContactMe />} />
       <Route path="/Login" element={<Login />} />
-      <AuthorizedRoute >
+      {/* <AuthorizedRoute > */}
         <Route path="/Secure" isAuthorized={isAuthenticated} element={<Secure />} />
-      </AuthorizedRoute>
+      {/* </AuthorizedRoute> */}
     </Routes>
   );
 };
