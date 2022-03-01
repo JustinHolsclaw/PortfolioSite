@@ -3,6 +3,7 @@ import Home from "./Views/Home";
 import Project from "./Views/Project";
 import ContactMe from "./Views/ContactMe";
 import Login from "./Components/Login/Login";
+import Secure from "./Components/Secure/Secure";
 
 // const AuthorizedRoute = ({ children, isAuthorized, ...rest }) => {
 //   if (!isAuthorized) {
