@@ -20,6 +20,7 @@ function Login(){
             axios.post('/api/Portfolio/Login', {username, password})
             .then(response => {
                 console.log(response)
+                setStatus(response.status)
             }
             )  
     }
@@ -28,9 +29,9 @@ function Login(){
             <div>
                 <form onSubmit={handleSubmit}>
                     <label >User Name:</label>
-                    <input value={username} onChange={handleUserName}></input>
+                    <input value={username} onChange={handleUserName}></input><br/>
                     <label>Password:</label>
-                    <input value={password} onChange={handlePassword}></input>
+                    <input value={password} onChange={handlePassword}></input><br/>
                     <button type='submit'>Submit</button>
                 </form>
                 {   () =>{
