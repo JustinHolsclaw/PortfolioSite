@@ -40,7 +40,7 @@ const MainSwitch = () => {
       <Route path="/ContactMe" element={<ContactMe />} />
       <Route path="/Login" element={<Login />} />
       {/* <AuthorizedRoute > */}
-        <Route path="/Secure" isAuthorized={isAuthenticated} element={<Secure />} />
+        <Route path="/Secure" element={<Secure />} />
       {/* </AuthorizedRoute> */}
     </Routes>
   );
