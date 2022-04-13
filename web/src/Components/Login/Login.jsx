@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Redirect, useNavigate} from 'react-router-dom';
+import filterText from '../FilterText/filterText';
 
 function Login(){
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [status, setStatus] = useState(200);
     const navigate = useNavigate();
-
+    
     const handleUserName = (e) =>{
-        setUserName(e.target.value)
+        setUserName(filterText(e))
     }
 
     const handlePassword = (e) =>{
-        setPassword(e.target.value)
+        setPassword(filterText(e))
     }  
 
     const handleSubmit = (e) =>{
