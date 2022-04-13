@@ -152,8 +152,10 @@ namespace PortfolioApi.Controllers
 
             string salt = BCrypt.Net.BCrypt.GenerateSalt(10);
             string hash = BCrypt.Net.BCrypt.HashPassword(request.Password, salt);
+            byte[] image = null;
+            string desciption = "";
 
-            _context.UserItems.Add(new UserItem(null, request.UserName, hash, salt));
+            _context.UserItems.Add(new UserItem(null, request.UserName, hash, salt, image, desciption));
             await _context.SaveChangesAsync();
             return Ok();
         }

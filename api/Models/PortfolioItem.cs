@@ -41,11 +41,15 @@ namespace PortfolioApi.Models
         public string UserName {get; set;}
         public string Hash {get; set;}
         public string Salt {get; set;}
-        public UserItem(int? Id, string UserName, string Hash, string Salt){
+        public byte[] Image {get; set;}
+        public string Description {get; set;}
+        public UserItem(int? Id, string UserName, string Hash, string Salt, byte[] Image, string Description){
             this.Id = Id;
             this.UserName = UserName;
             this.Hash = Hash;
             this.Salt = Salt;
+            this.Image = Image;
+            this.Description = Description;
         }
     }
 
