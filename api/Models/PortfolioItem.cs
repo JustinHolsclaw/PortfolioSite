@@ -8,6 +8,8 @@ namespace PortfolioApi.Models
         public int? Id {get; set;}
         public string Name {get; set;}
         public string Description {get; set;}
+        public string Github_Url {get; set;}
+        
 
         [JsonConstructor]
         public PortfolioItem(string name, string description, int? id){
@@ -50,6 +52,20 @@ namespace PortfolioApi.Models
             this.Salt = Salt;
             this.Image = Image;
             this.Description = Description;
+        }
+    }
+
+    public class CommentItem
+    {
+        public int? Id {get; set;}
+        public int? User_id {get; set;}
+        public int? PortfolioItem_id {get; set;}
+        public string Comment {get; set;}
+
+        public CommentItem(int? Id, int? User_id, int? PortfolioItem_id, string Comment){
+            this.Id = Id;
+            this.User_id = User_id;
+            this.Comment = Comment;
         }
     }
 

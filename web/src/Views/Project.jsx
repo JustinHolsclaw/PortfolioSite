@@ -1,6 +1,11 @@
 import "../custom.scss"
-
+import Comments from '../Components/Comments/Comments';
 const Project = () => {
+  const comment ={
+    "name":"Justin",
+    "text":"this is a comment"
+  }
+
   const projects = [
     {
       title: "Cooking with Justin API",
@@ -39,6 +44,7 @@ const Project = () => {
               <button className="btn btn-style">Git Repo</button>
             </div>
           </div>
+          <Comments comments={comment}/>
         </div>
       ))}
     </>
